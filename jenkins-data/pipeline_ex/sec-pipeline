@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    stages {
+	stage('Build') {
+	    steps {
+		sh 'echo this is my second pipeline'
+		sh '''
+		    echo "we can do more stuff here"
+		    ls -ltrah
+		'''
+	    }
+	}
+    }
+}

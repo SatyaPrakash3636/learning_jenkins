@@ -1,0 +1,45 @@
+[prod-user@ip-172-31-26-95 ~]$ history
+    1  whoami
+    2  docker ps
+    3  docker-compose
+    4  docker-compose version
+    5  docker ps
+    6  docker-compose version
+    7  hostname
+    8  cd /home/prod-user/
+    9  ls -ltr
+   10  pwd
+   11  mkdir .ssh
+   12  ls -ltr
+   13  ls -ltra
+   14  chmod 700 .ssh
+   15  ls -ltra
+   16  vim .ssh/authorized_keys
+   17  chmod 400 .ssh/authorized_keys
+   18  pwd
+   19  docker ps
+   20  docker ps -a
+   21  history
+
+
+[root@ip-172-31-26-95 ~]# history
+    1  yum update
+    2  amazon-linux-extras install docker
+    3  docker ps
+    4  service docker start
+    5  docker ps
+    6  useradd prod-user
+    7  passwd prod-user
+    8  usermod -a -G docker prod-user
+    9  sudo su prod-user
+   10  chkconfig docker on
+   11  curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+   12  chmod +x /usr/local/bin/docker-compose
+   13  sudo su prod-user
+   14  docker-compose version
+   15  curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+   16  ls -ltr /usr/local/bin/docker-compose
+   17  chmod +x /usr/local/bin/docker-compose
+   18  ls -ltr /usr/local/bin/docker-compose
+   19  docker-compose version
+   20  su prod-user

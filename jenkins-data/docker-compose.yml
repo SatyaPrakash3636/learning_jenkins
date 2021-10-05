@@ -1,0 +1,85 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: ansible-jenkins-docker
+    build:
+      context: /home/jenkins/jenkins-data/pipeline
+    ports:
+      - "8080:8080"
+    volumes:
+      - "$PWD/jenkins_home:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - net
+
+#  remote_host:
+#    container_name: remote-host
+#    image: remote-host
+#    build:
+#      context: /home/jenkins/centos7
+#    networks:
+#      - net
+
+  prod_host:
+    container_name: prod-host
+    image: prod-host
+    build:
+      context: /home/jenkins/prd_server
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - net
+      
+#  db_host:
+#    container_name: sql-host
+#    image: mysql:5.7
+#    environment:
+#      - "MYSQL_ROOT_PASSWORD=mysql"
+#    volumes:
+#      - "$PWD/sql_data:/var/lib/mysql"
+#    networks:
+#      - net
+
+#  web:
+#    container_name: web
+#   image: ansible-web
+#    build:
+#      context: /home/jenkins/ansible-jenkins/web
+#    ports:
+#      - "80:80"
+#    networks:
+#      - net
+
+  nexus:
+    container_name: nexus
+    image: sonatype/nexus3
+    ports:
+      - "8081:8081"
+      - "8123:8123"
+    volumes:
+      - ./nexus3/data:/nexus-data
+    networks:
+      - net
+
+#  remote_host2:
+#    container_name: remote-host2
+#    image: remote-host2
+#    build:
+#      context: /home/jenkins/centos
+#    networks:
+#      - net
+#  git:
+#    container_name: git-server
+#    image: 'gitlab/gitlab-ce:latest'
+#    hostname: 'gitlab.example.com'
+#    ports:
+#      - '8090:80'
+#    volumes:
+#      - '/srv/gitlab/config:/etc/gitlab'
+#      - '/srv/gitlab/logs:/var/log/gitlab'
+#      - '/srv/gitlab/data:/var/opt/gitlab'
+#    networks:
+#      - net
+networks:
+  net:

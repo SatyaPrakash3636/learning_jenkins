@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+	stage('timeout') {
+	    steps {
+		retry(3) {
+		    sh 'this is going to fail :c'
+		    }
+		}
+	}
+    }
+}
